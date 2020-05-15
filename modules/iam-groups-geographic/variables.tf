@@ -18,12 +18,32 @@ variable "prefix" {
 ## Roles assigned to access groups
 ################################
 variable "audit_admin_roles" {
-  type = list(string)
-  default = ["Administrator", "Manager"]
+  description = "Platform and Service roles assigned for administrators of audit logs (IBM Activity Tracker w/ LogDNA) services"
+  type        = list(string)
+  default     = ["Administrator", "Manager"]
 }
-variable "audit_priviledged_roles" {
-  type = list(string)
-  default = ["Operator", "Manager"]
+variable "audit_privileged_roles" {
+  description = "Platform and Service roles assigned for privileged users that can have access to audit logs (IBM Activity Tracker w/ LogDNA) services"
+  type        = list(string)
+  default     = ["Operator", "Manager"]
+}
+
+variable "admin_roles" {
+  description = "Platform and Service roles assigned to administrators"
+  type        = list(string)
+  default     = ["Administrator", "Manager"]
+}
+
+variable "privileged_roles" {
+  description = "Platform and Service roles assigned to privileged operators"
+  type        = list(string)
+  default     = ["Viewer", "Writer"]
+}
+
+variable "observer_roles" {
+  description = "Platform and Service roles assigned to non-privileged users that need to view but not update cloud platform or service configurations"
+  type        = list(string)
+  default     = ["Viewer", "Reader"]
 }
 
 ################################

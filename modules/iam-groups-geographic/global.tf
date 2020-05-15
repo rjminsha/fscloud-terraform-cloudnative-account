@@ -3,7 +3,7 @@
 ############################
 resource "ibm_iam_access_group" "global_admin" {
   name        = "${var.prefix}-global-admin"
-  description = "Global team that has super user access across regions for the resource group"
+  description = "Global access group that has super user access across regions for the resource group"
 }
 resource "ibm_iam_access_group_policy" "global_admin" {
  access_group_id = "${ibm_iam_access_group.global_admin.id}"
@@ -16,7 +16,8 @@ resource "ibm_iam_access_group_policy" "global_admin" {
 
 resource "ibm_iam_access_group" "global_observer" {
   name        = "${var.prefix}-global-observer"
-  description = "Group can view all resources for the resource group"
+  description = "Group access group can view all resources for the resource group"
+
 }
 
 resource "ibm_iam_access_group_policy" "global_observer" {
@@ -31,6 +32,7 @@ resource "ibm_iam_access_group_policy" "global_observer" {
 resource "ibm_iam_access_group" "global_registry_pull" {
   name        = "${var.prefix}-global-registry-pull"
   description = "Group can pull container images from Container Registry"
+
 }
 
 resource "ibm_iam_access_group_policy" "global_registry_pull" {
