@@ -15,7 +15,6 @@ provider "ibm" {
   generation = 2
   region = "us-south"
   ibmcloud_timeout = 300
-  version = ">= 1.21.1"
 }
 
 module "iam_groups" {
