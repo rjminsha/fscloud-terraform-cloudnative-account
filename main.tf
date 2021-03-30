@@ -1,7 +1,13 @@
 variable "ibmcloud_api_key" {}
 
 terraform {
-  required_version = "~> 0.12"
+  required_version = ">= v0.13.5"
+  required_providers {
+    ibm = {
+      source  = "IBM-Cloud/ibm"
+      version = ">= 1.21.1"
+    }
+  }
 }
 
 provider "ibm" {
@@ -9,7 +15,7 @@ provider "ibm" {
   generation = 2
   region = "us-south"
   ibmcloud_timeout = 300
-  version = "~> 1.5"
+  version = ">= 1.21.1"
 }
 
 module "iam_groups" {

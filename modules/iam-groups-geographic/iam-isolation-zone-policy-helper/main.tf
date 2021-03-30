@@ -30,6 +30,15 @@
 #       }
 #
 #######################
+terraform {
+  required_version = ">= v0.13.5"
+  required_providers {
+    ibm = {
+      source  = "IBM-Cloud/ibm"
+      version = ">= 1.21.1"
+    }
+  }
+}
 
 variable "group_roles" {
   type        = list(string)
@@ -77,7 +86,7 @@ locals {
   owner        = "Community Team"
 }
 
-## Create service specific policy
+## Create service specific access group and policy
 resource "ibm_iam_access_group" "iz-s" {
   name        = "${var.group_prefix}-${var.i_zones[count.index]}-${var.group_name}"
   description     = format("Group has %s role(s) for %s in %s isolation zone.  %s", local.role_string, var.service, upper(var.i_zones[count.index]), var.group_description)

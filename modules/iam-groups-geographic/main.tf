@@ -1,6 +1,15 @@
 ############################
 ## Groups per isolation zone
 ############################
+terraform {
+  required_version = ">= v0.13.5"
+  required_providers {
+    ibm = {
+      source  = "IBM-Cloud/ibm"
+      version = ">= 1.21.1"
+    }
+  }
+}
 
 module "iz_admin" {
   source                = "./iam-isolation-zone-policy-helper"
